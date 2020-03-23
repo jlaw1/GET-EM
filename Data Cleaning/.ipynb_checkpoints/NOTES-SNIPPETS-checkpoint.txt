@@ -1,0 +1,115 @@
+
+#####
+
+SEE BELOW FOR:
+- picks dictionary
+- hero dictionary lookup
+- convert T/F to boolean
+- other snipit stuff
+
+
+
+
+
+
+
+
+# source: https://github.com/codexponent/dota2-draft-analysis/blob/master/draft-ml.ipynb
+# # # Converting boolean value into number
+boolean_values = 22
+for i in range(boolean_values):
+    pick_id = '{}is_pick'.format(i+1)
+    data[pick_id] = data[pick_id].apply(lambda x: 1 if x else 0)
+
+
+
+%%%%%%%%%%%%%%%%%%%
+groupedDF = match_df.filter(items=['match_id','radiant_win',
+                                          'patch'])  # Remove columns
+groupedDF = groupedDF.groupby(['patch']).count()  # Perform Aggregate
+print(groupedDF)
+
+matches = match_df[match_df.patch == 41]
+
+&%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+df.rename(columns={ df.columns[1]: "new_b" })
+
+	
+df.rename(columns={ df.columns[1]: "new_b" })
+
+df.rename(columns={'z':'new_z','d':'new_d'},inplace=True)
+1
+df.rename(columns={'z':'new_z','d':'new_d'},inplace=True)
+
+
+
+#### 
+
+# # # Getting Heroes ID according to the name
+heroes = api.get_heroes()
+heroes_dict = {}
+for i in range (len(heroes['heroes'])):
+    hero_id = heroes['heroes'][i]['id']
+    hero_name = heroes['heroes'][i]['localized_name']
+    heroes_dict[hero_id]= hero_name
+def change_hero_name(row):
+    if row in heroes_dict:
+        return heroes_dict[row]
+    
+columns = [
+    '1hero_id', 
+    '2hero_id', 
+    '3hero_id', 
+    '4hero_id', 
+    '5hero_id', 
+    '6hero_id', 
+    '7hero_id', 
+    '8hero_id', 
+    '9hero_id',
+    '10hero_id',
+    '11hero_id', 
+    '12hero_id', 
+    '13hero_id', 
+    '14hero_id', 
+    '15hero_id', 
+    '16hero_id', 
+    '17hero_id', 
+    '18hero_id', 
+    '19hero_id',
+    '20hero_id',
+    '21hero_id',
+    '22hero_id'
+    ]
+    
+for i in range(len(columns)):
+    data[columns[i]] = data[columns[i]].apply(change_hero_name)
+    
+    
+    ##############
+    
+    # picks dictionary
+picks_dict = {'match_id': int, '1is_pick': bool, '1team': bool, '1hero_id': int,
+               '2is_pick': bool, '2team': bool, '2hero_id': int, 
+               '3is_pick': bool, '3team': bool, '3hero_id': int, 
+               '4is_pick': bool, '4team': bool, '4hero_id': int, 
+               '5is_pick': bool, '5team': bool, '5hero_id': int, 
+               '6is_pick': bool, '6team': bool, '6hero_id': int, 
+               '7is_pick': bool, '7team': bool, '7hero_id': int, 
+               '8is_pick': bool, '8team': bool, '8hero_id': int, 
+               '9is_pick': bool, '9team': bool, '9hero_id': int, 
+               '10is_pick': bool, '10team':bool, '10hero_id': int, 
+               '11is_pick': bool, '11team':bool, '11hero_id': int, 
+               '12is_pick': bool, '12team':bool, '12hero_id': int,
+               '13is_pick': bool, '13team':bool, '13hero_id': int, 
+               '14is_pick': bool, '14team':bool, '14hero_id': int, 
+               '15is_pick': bool, '15team':bool, '15hero_id': int, 
+               '16is_pick': bool, '16team':bool, '16hero_id': int, 
+               '17is_pick': bool, '17team':bool, '17hero_id': int,
+               '18is_pick': bool, '18team':bool, '18hero_id': int, 
+               '19is_pick': bool, '19team':bool, '19hero_id': int,
+               '20is_pick': bool, '20team':bool, '20hero_id': int,
+               '21is_pick': bool, '21team':bool, '21hero_id': int, 
+                '22is_pick': bool, '22team':bool, '22hero_id': int}
+
+picks_df = picks_df.astype(picks_dict)
