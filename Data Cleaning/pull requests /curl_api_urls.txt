@@ -1,3 +1,0 @@
-curl https://api.opendota.com/api/heroes > heroes.json
-
-curl https://api.opendota.com/api/leagues > leagues.json
